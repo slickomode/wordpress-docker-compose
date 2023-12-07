@@ -1,30 +1,44 @@
 <?php
 get_header();
 ?>
-<!-- Start the Loop. -->
-<?php if (have_posts()):
-    while (have_posts()):
-        the_post(); ?>
-        <main>
-            <section>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
+
+<main>
+    <section class="flex-container">
+
+        <aside class="sidebar2">
+        </aside>
+
+        <div class="loop-content">
+            <?php if (have_posts()):
+                while (have_posts()):
+                    the_post(); ?>
+                    <div class="blogg-container">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-9">
+                                <h1>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </h1>
+
+                                <div class="entry-content">
+                                    <?php the_content(); ?>
+                                </div><!-- .entry-content -->
+
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
                                 <?php if (has_post_thumbnail()): ?>
                                     <div class="post-thumbnail">
-                                        <?php the_post_thumbnail('full'); ?>
+                                        <?php the_post_thumbnail('medium'); ?>
                                     </div>
                                 <?php endif; ?>
 
                                 <header class="entry-header">
-                                    <h2 class="title">
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?php the_title(); ?>
-                                        </a>
-                                    </h2>
-
                                     <ul class="meta">
                                         <li>
                                             <i class="fa fa-calendar"></i>
@@ -41,24 +55,19 @@ get_header();
                                     </ul>
                                 </header><!-- .entry-header -->
 
-                                <div class="entry-content">
-                                    <?php the_content(); ?>
-                                </div><!-- .entry-content -->
-
                             </article><!-- #post-<?php the_ID(); ?> -->
-
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
-    <?php endwhile; ?>
-<?php endif; ?>
+                <?php endwhile; ?>
+            <?php endif; ?>
+        </div>
 
+        <aside class="sidebar">
+            <?php get_sidebar(); ?>
+        </aside>
 
-
-
-
+    </section>
+</main>
 
 <?php
 get_footer();

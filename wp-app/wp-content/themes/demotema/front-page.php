@@ -13,7 +13,7 @@ get_header();
                             <div class="hero">
                                 <img id="whatever" src="<?php the_post_thumbnail_url('full') ?>" alt="">
                                 <div class="text">
-                                    <h1>
+                                    <h1 id="frontpage">
                                         <?php the_title(); ?>
                                     </h1>
                                     <p>
@@ -28,11 +28,6 @@ get_header();
         </main>
     <?php endwhile; ?>
 <?php endif; ?>
-
-
-
-
-
 
 <?php
 get_footer();

@@ -17,13 +17,17 @@ Text Domain: Martins Tema
   margin: 0;
 }
 
+*:focus {
+  outline: none;
+}
+
+
 body {
-  font-family: 'Nova Square', sans-serif;
+    font-family: 'Nova Square', sans-serif;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
     background-color: #141414;
+    min-height: 100vh;
   }
 
   header {
@@ -49,57 +53,177 @@ body {
   width: 100%;
 }
 
-.under-container {
-  width: 25vw;
+.side-container {
+  width: 30%;
+}
+.left-side-container {
+  width: 30%;
 }
 
 h1,h2,h3 {
-  color: #ccc;
-
+  color: #ffffff;
+  text-decoration: none;
 }
+
+a {
+  color: #ffffff;
+}
+
+
+a:link { text-decoration: none; }
+
+a:visited { text-decoration: none; }
+
+a:hover { text-decoration: none; }
+
+a:active { text-decoration: none; }
 
 .container {
   border: 1px solid #ccc;
   display: flex;
   height: 100%;
   width: 50%;
-  padding: 25px 25px 25px 25px;
+  padding: 30px;
   margin-right: auto;
   margin-left: auto;
   box-sizing: border-box;
+  margin-top: 35px;
+  background-color: #333;
+}
+
+.blogg-container {
+  border: 1px solid #ccc;
+  display: flex;
+  width: 70%;
+  padding: 30px;
+  margin: auto;
+  box-sizing: border-box;
+  background-color: #333;
+  margin-top: 65px;
+  border-radius: 10px;
+}
+
+.arkiv-container {
+  border: 1px solid #ccc;
+  display: flex;
+  width: fit-content;
+  padding: 30px;
+  margin: auto;
+  box-sizing: border-box;
+  background-color: #333;
+  margin-top: 65px;
+  border-radius: 10px;
+}
+
+.menu-container {
+  border: 1px solid #ccc;
+  display: flex;
+  height: 100%;
+  width: 50%;
+  padding: 30px;
+  margin-left: auto;
+  box-sizing: border-box;
+  margin-top: 35px;
+  background-color: #333;
+}
+
+.side-menu {
+  width: 25%; /* Adjust the width as needed */
+  padding: 30px;
+  box-sizing: border-box;
+  margin-top: 15px;
+  float: right;
+
 }
 
 
 
-p {
-  color: #ccc;
-  font-size: 12px;
+.menu li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  width: 35%;
+
+}
+
+.row {
+  width: 100%;
+  height: 100%;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.loop-content {
+  flex: 1; /* Takes up remaining space */
 }
 
 
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+  .flex-container {
+    flex-direction: column; /* Stack flex items vertically */
+  }
+
+  .side-menu {
+    width: 100%; /* Occupy full width when stacked */
+  }
+  .menu-container {
+    margin-left: 0;
+    margin: auto;
+    width: 90%;
+  }
+}
+
+/* Searchbutton */
 
 #searchform {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
+  padding-bottom: 15px;
+  float: right;
+  margin-right: 30px;
 }
 
-input[type="text"] {
-  margin-right: 8px;
-  padding: 8px;
-  border: 1px solid #ccc;
+#search input[type="text"] {
+  padding: 10px;
+  color: #fff;
+  border: none;
+  background-color: #141414;
+  width: 70%;
+  float: right;
+
 }
 
-input[type="submit"] {
+/* input[type="submit"] {
   padding: 8px 16px;
   color: #fff;
   background-color: #141414;
   border: none;
   cursor: pointer;
   border: 1px solid #ccc;
+} */
+
+form i {
+  color: #fff;
 }
 
+#search {
+  display: flex;
+  background-color: #141414;
+  border-bottom: 1px solid #fff;
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* NAV */
 
 nav {
   width: 100%;
@@ -121,11 +245,10 @@ nav a:hover {
   transform: scale(1.1); /* Scale the text on hover (adjust the value as needed) */
 }
 
-
 .nav-menu {
   display: flex;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .nav-menu li {
@@ -142,82 +265,383 @@ li {
   display: flex;
 }
 
-.side-menu {
-  width: 250px; /* Adjust the width of your side menu */
-  background-color: #333; /* Set the background color for the side menu */
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+/* Hamburger Menu Styles */
+#menu__toggle {
+  opacity: 0;
+}
+#menu__toggle:checked + .menu__btn > span {
+  transform: rotate(45deg);
+}
+#menu__toggle:checked + .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0deg);
+}
+#menu__toggle:checked + .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu__box {
+  left: 0 !important;
+}
+.menu__btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 2;
+}
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #fff; /* Adjust color as needed */
+  transition-duration: .25s;
+}
+.menu__btn > span::before {
+  content: '';
+  top: -8px;
+}
+.menu__btn > span::after {
+  content: '';
+  top: 8px;
+}
+.menu__box {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #141414;
+
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  transition-duration: .25s;
+  z-index: 1;
+}
+.menu__item {
+  display: block;
+  padding: 12px 24px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: .25s;
+}
+.menu__item:hover {
+  background-color: #fff;
 }
 
-.side-menu a {
+.menu__box li {
+  list-style: none;
+  margin: 0;
+  padding: 10px 20px; /* Adjust the padding as needed */
+}
+
+.menu__box a {
+  color: #fff; /* Adjust the color as needed */
+  font-size: 16px; /* Adjust the font size as needed */
+  font-weight: 400; /* Adjust the font weight as needed */
+  transition: transform 0.3s; /* Add a smooth transition effect on transform */
+
+}
+
+.menu__box a:hover {
+  transform: scale(1.1);
+
+}
+
+
+@media screen and (max-width: 1050px) {
+  /* Add styles for smaller screens, and make the existing navigation hidden or adapted */
+  .nav-menu {
+    display: none; /* Hide existing navigation */
+  }
+  .side-container {
+    width: 50%;
+  }
+  .left-side-container {
+    display: none;
+  }
+  #searchform {
+    float: none;
+    margin: 0 auto;
+  }
+  /* Add any other styles or adjustments needed for smaller screens */
+}
+
+@media screen and (min-width: 1050px) {
+  /* Add styles for smaller screens, and make the existing navigation hidden or adapted */
+  .hamburger-menu{
+    display: none; /* Hide existing navigation */
+  }
+  /* Add any other styles or adjustments needed for smaller screens */
+}
+
+
+/* SIDEBAR */
+
+.widget {
+  padding: 15px;
+  margin: 10px;
+}
+
+.widget li {
+  margin-left: 5px;
+}
+
+.widget a {
   color: #fff;
   text-decoration: none;
-  padding: 10px 0; /* Adjust the padding for each side menu item */
-  display: block;
-  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  transition: transform 0.3s; /* Add a smooth transition effect on transform */
 }
 
-.side-menu a:hover {
-  background-color: #555; /* Change the background color on hover */
+.widget a:hover {
+  transform: scale(1.1); /* Scale the text on hover (adjust the value as needed) */
 }
 
-/* Adjustments for nested sub-menu */
-.side-menu .sub-menu {
-  margin-left: 20px;
+
+
+.sidebar {
+  margin-top: 65px;
+  width: 15%; /* Adjust the width as needed */
+  box-sizing: border-box;
+  padding: 20px; /* Add some padding for better spacing */
+  margin-right: 100px;
+  border: 1px solid #ccc;
+  height: fit-content;
 }
 
-.side-menu li:hover .sub-menu {
-  display: block;
+.sidebar2 {
+  margin-top: 65px;
+  width: 15%; /* Adjust the width as needed */
+  box-sizing: border-box;
+  padding: 20px; /* Add some padding for better spacing */
+  margin-right: 100px;
+  height: fit-content;
 }
 
-footer {
-  background-color: #4d485563;
-  color: #fff;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 
+.sidebar {
+  line-height: 1.6;
 }
 
-.row {
-  width: 100%;
-  height: 100%;
+@media (max-width: 1000px) {
+  .sidebar2 {
+    display: none;
+  }
+  .sidebar {
+    display: none;
+
+  }
+
+  .blogg-container {
+      flex-direction: column;
+      width: 90%;
+      padding: 15px;
+  }
+  .row {
+    flex-direction: column;
 }
 
-.main-container {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  height: auto;
+.post-thumbnail {
+    margin-bottom: 10px; /* Adjust margin as needed */
 }
+}
+
+
+@media (max-width: 1670px) {
+  .sidebar {
+    width: 20%;
+  }
+}
+
 
 /* Style the hero section */
 .hero {
-  height: 100%;
+  height: 80vh;
   width: 100%;
-  position: absolute;
+  position: relative;
   text-align: center;
-
 }
 
 /* Style the hero image */
 #whatever {
   width: 100%;
   height: 100%;
+  z-index: -1;
 }
 
 /* Style the hero text */
 .text {
-  color: #ccc;
+  width: 40%;
+  color: #ffffff;
+  background-color: #141414;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 25px;
+  border: 1px solid #ccc;
 }
 
-/* Style the footer */
+figure {
+  margin-top: 15px;
+}
+
+#frontpage {
+  font-size: 40px;
+}
+
+p {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .text {
+    width: 80%;
+    padding: 10px;
+  }
+  #frontpage {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+}
+
+
+/* Article */
+
+
+article {
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Styling for the post thumbnail */
+.post-thumbnail img {
+  display: block; /* Make sure it's not set to 'none' or 'hidden' */
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+
+/* Styling for the entry header */
+.entry-header {
+  margin-bottom: 15px;
+  background-color: #333;
+}
+
+
+.title a {
+  color: #333;
+  text-decoration: none;
+}
+
+.title a:hover {
+  text-decoration: underline;
+}
+
+/* Styling for the meta information */
+.meta {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+}
+
+.meta li {
+  display: inline-block;
+  margin-right: 10px;
+  color: #ccc;
+
+}
+
+
+/* Styling for the entry content */
+.entry-content {
+  line-height: 1.5;
+  margin-top: 10px;
+
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  article {
+      padding: 10px;
+  }
+
+  .post-thumbnail img {
+      margin-bottom: 10px;
+  }
+}
+
+
+
+/* Undersida 4*/
+
+.undersida4 {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+
+.text4 {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 30px;
+  border: 1px solid #ccc;
+  background-color: #333;
+
+}
+
+.text4 h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.image-container {
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .text4,
+  .image-container {
+    width: 100%;
+  }
+
+}
+
+
+/* FOOTER*/
+
+
 footer {
   height: 15%;
   background-color: #141414;
   color: #fff;
   padding: 30px 0;
+  width: 100%;
+  margin-top: auto;
+
 }
 
 footer p {
@@ -248,9 +672,12 @@ footer p {
   padding: 0 50px 0 50px;
   box-sizing: border-box; /* Include padding and border in the width */
 }
-.footer-column h3{
+.footer-column ul, p, h3{
  margin-bottom: 10px;
+ margin-left: 5px;
+
 }
+
 
 
 
@@ -281,70 +708,75 @@ footer p {
 .copyright {
   text-align: center;
   margin: 0 auto;
+  margin-top: 15px;
+}
+
+@media (max-width: 1000px) {
+  .footer-content {
+    width: 100%;
+  }
+
+  .footer-column {
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 25px;
+  }
+  .social-links{
+    margin-left: 5px;
+  }
 }
 
 
-/* Article */
 
-
-article {
-  margin-bottom: 30px;
-  padding: 15px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Styling for the post thumbnail */
-.post-thumbnail img {
-  display: block; /* Make sure it's not set to 'none' or 'hidden' */
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 15px;
-}
-
-
-/* Styling for the entry header */
-.entry-header {
-  margin-bottom: 15px;
-}
-
-.title a {
-  color: #333;
-  text-decoration: none;
-}
-
-.title a:hover {
-  text-decoration: underline;
-}
-
-/* Styling for the meta information */
-.meta {
-  list-style: none;
-  margin: 0;
-  padding: 5px;
-}
-
-.meta li {
-  display: inline-block;
-  margin-right: 10px;
-  color: #777;
-
-}
-
-
-/* Styling for the entry content */
-.entry-content {
-  line-height: 1.6;
-}
 
 /* Responsive styles */
-@media (max-width: 768px) {
-  article {
-      padding: 10px;
+@media (max-width: 1700px) {
+  .blogg-container {
+    flex-direction: column;
+  }
+
+  .col-xs-12 {
+    width: 100%;
   }
 
   .post-thumbnail img {
-      margin-bottom: 10px;
+    margin-bottom: 15px;
   }
+}
+
+
+/* KONTAKT */
+
+#wpcf7-f79-p157-o1 input[type="text"],
+#wpcf7-f79-p157-o1 input[type="email"],
+textarea {
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Example style for form submit button */
+#wpcf7-f79-p157-o1 input[type="submit"] {
+    background-color: #141414;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#wpcf7-f79-p157-o1 input[type="submit"]:hover {
+    background-color: #f00c0c;
+}
+
+@media (max-width: 768px) {
+  #wpcf7-f79-p157-o1 input[type="text"],
+#wpcf7-f79-p157-o1 input[type="email"],
+textarea {
+    width: 70%;
+}
+
 }
